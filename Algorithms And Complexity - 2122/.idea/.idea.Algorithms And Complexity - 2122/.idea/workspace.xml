@@ -4,11 +4,18 @@
     <projectFile>Algorithms And Complexity - 2122/Algorithms And Complexity - 2122.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6155818-dc57-4c25-9fdf-a4d76ee9dbf9" name="Changes" comment="" />
+    <list default="true" id="b6155818-dc57-4c25-9fdf-a4d76ee9dbf9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Input.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Input.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Program.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27WBMke9vJKf1kl7N5PL1RHb1MK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -52,13 +59,14 @@
       <option name="presentableId" value="Default" />
       <updated>1649425919790</updated>
       <workItem from="1649425923979" duration="25000" />
+      <workItem from="1649425983152" duration="1962000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

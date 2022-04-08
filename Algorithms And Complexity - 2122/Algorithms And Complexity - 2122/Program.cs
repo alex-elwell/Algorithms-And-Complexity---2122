@@ -1,5 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-Console.WriteLine("Hello, World!");
+//Calling input.cs
 
-Console.WriteLine("Why are you fucking red?");
+using Algorithms_And_Complexity___2122;
+
+var input = new Input();
+Console.WriteLine(input);
