@@ -5,16 +5,13 @@ namespace Algorithms_And_Complexity___2122;
 public class Input
 {
     /// <summary>
-    /// Returns a dictionary of arrays to be used. - TODO - add how it returns
+    /// Returns a dictionary of arrays to be used. 
     /// </summary>
-    /// <param name="type"> the way the user wants to input data? - TODO - check this. </param>
-    /// <returns>Dictionary containing the names and values of each metric.</returns>
-    public Dictionary<string, string?[]> FileReturn()
+    /// <returns>Dictionary as such: Key: File Name, Value: List of Strings holding the respective files data</returns>
+    public static Dictionary<string, string?[]> FileReturn()
     {
-        //Write to the console where the files should be - if they're not present then quit after our return to main.
-        Console.WriteLine("PLease ensure that the supplied text files are in the following directory: bin/Debug/net6.0/");
         //Setting the filepath where the program is being run - works on MacOS and Windows
-        string filepath = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
+        string filepath = AppDomain.CurrentDomain.BaseDirectory;
         //Get the directoryInfo from the filepath. 
         DirectoryInfo d = new DirectoryInfo(filepath);
         //Dictionary to store file data and names
@@ -24,7 +21,7 @@ public class Input
         foreach (var file in d.GetFiles("*.txt"))
         {
             //Create string that gets the Directory with the name of the file attached to the end to make it into a working directory. 
-            string? fileDirectory = file.DirectoryName + "/" + file.Name;
+            string fileDirectory = file.DirectoryName + "/" + file.Name;
             
             //if the file has a directory name then continue - this accounts for a null value returned from the program. 
             if (file.DirectoryName != null)
@@ -55,15 +52,29 @@ public class Input
             }
         }
         
-        //TODO - check if the data in the dictionary is what we want and if not quit and inform user where to put the data. 
-        // Possibly try to access the 2nd or third item as there are 6 so if there isnt a 5th or 6th then we know we dont have a complete data set?
-        // Could ask how many files the user has if its not right before quitung - would account for there being a different amount of data if
-        // they use something other then provided...
-        
-        
-        
-        
-        
+        //Count to hold the amount of values in the dictionary. 
+        int count = 0;
+        // For each item in the dictionary we add to the count to find out how many items are in the dictionary
+        foreach (var unused in dictionary)
+        {
+            //adding one to count
+            count++;
+        }
+        //if the count is the expected amount do nothing but if its not then ask for the required amount
+        if (count != 6)
+        {
+            //Ask for the amount of expected data 
+            Console.WriteLine("How many data files are you expecting to be inputted?");
+            string? required = Console.ReadLine();
+            //if required is not null and count is equal to the required data then continue. 
+            if (required != null && count != int.Parse(required))
+            {
+                Console.WriteLine("The count is not equal to the expected value");
+                Console.WriteLine("Please check the files in the net 6.0 folder and restart the program.");
+                Environment.Exit(001);
+            }
+        }
+
         //Return's the dictionary.  
         return dictionary;
     }
