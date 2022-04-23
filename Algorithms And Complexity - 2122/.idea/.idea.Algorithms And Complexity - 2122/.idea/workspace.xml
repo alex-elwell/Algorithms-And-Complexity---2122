@@ -33,13 +33,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Algorithms And Complexity - 2122" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -70,7 +69,8 @@
       <updated>1649425919790</updated>
       <workItem from="1649425923979" duration="25000" />
       <workItem from="1649425983152" duration="1977000" />
-      <workItem from="1650620160205" duration="17592000" />
+      <workItem from="1650620160205" duration="19443000" />
+      <workItem from="1650730112728" duration="2517000" />
     </task>
     <servers />
   </component>
