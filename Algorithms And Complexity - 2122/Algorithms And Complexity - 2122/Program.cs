@@ -64,11 +64,99 @@ while (true)
         Console.WriteLine("Please only enter a number");
     }
 }
-string fileName = keyList[int.Parse(option)];
-string?[] data = output[keyList[int.Parse(option)]].ToArray();
 
-Console.WriteLine($"File name: {fileName}");
-foreach (var i in data)
+//Saving both the fileName and data to the corresponding variable 
+var fileName = keyList[int.Parse(option)];
+//array of integers - converting output array dictionary's request data (using key) into an array of integers
+int[] data = Array.ConvertAll(output[keyList[int.Parse(option)]].ToArray(), s =>
 {
-    Console.WriteLine($"data: {i}");
-}
+    //If s (piece of data / number) is null - Alert error and exit with code 1 - if not null convert to int. 
+    if (s != null) return int.Parse(s);
+    Console.WriteLine("There was an error - please use a different data Source");
+    Environment.Exit(1);
+    return 0;
+});
+
+// foreach (var i in data)
+// {
+//     Console.WriteLine($"Data: {i}");
+//     Console.WriteLine($"Data type: {i.GetType()}");
+// }
+// Console.WriteLine($"File name: {fileName}");
+
+var sort = new Sort(data);
+
+
+while (true)
+{
+    Console.WriteLine("Please Select a Sorting Algorithm: ");
+    Console.WriteLine("1: Bubble Sort");
+    Console.WriteLine("2: Quick Sort");
+    Console.WriteLine("3: Selection Sort");
+    Console.WriteLine("4: Merge Sort");
+    string? sortDecision = Console.ReadLine();
+    try
+    {
+        //this will throw an error if anything but a number is inputted
+        if (sortDecision != null)
+        {
+            int.Parse(sortDecision);
+        }
+    }
+    catch (Exception)
+    {
+        Console.WriteLine("You should only enter numbers into this field!");
+        continue;
+        // throw;
+    }
+
+    string? directionOption;
+    while (true)
+    {
+        Console.WriteLine("1: Ascending \n2: Descending?");
+        directionOption = Console.ReadLine();
+        try
+        {
+            int.Parse(directionOption!);
+        }
+        catch (Exception )
+        {
+            Console.WriteLine("Please only enter numbers!");
+            continue;
+        }
+
+        if (int.Parse(directionOption!) == 1 || int.Parse(directionOption!) == 2 )
+        {
+            break;
+        }
+        Console.WriteLine("PLease only enter 1 or 2 ");
+    }
+    
+    if (int.Parse(sortDecision!) <= 4)
+            {
+                switch (sortDecision)
+                {
+                    case "1":
+                        var bubbleSortReturn = sort.BubbleSort(int.Parse(directionOption!));
+                        foreach (var i in bubbleSortReturn)
+                        {
+                            Console.WriteLine(i);
+                        }
+                        break;
+                    case "2":
+                        var quickSortReturn = sort.QuickSort(int.Parse(directionOption!));
+                        Console.WriteLine(quickSortReturn);
+                        break;
+                    case "3":
+                        var selectionSortReturn = sort.SelectionSort(int.Parse(directionOption!));
+                        Console.WriteLine(selectionSortReturn);
+                        break;
+                    case "4":
+                        var mergeSortReturn = sort.MergeSort(int.Parse(directionOption!));
+                        Console.WriteLine(mergeSortReturn);
+                        break;
+                }
+                break;
+            }
+        }
+
