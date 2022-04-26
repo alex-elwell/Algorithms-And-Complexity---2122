@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6155818-dc57-4c25-9fdf-a4d76ee9dbf9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Search.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Sort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Sort.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +35,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Algorithms And Complexity - 2122" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -70,7 +77,11 @@
       <workItem from="1649425923979" duration="25000" />
       <workItem from="1649425983152" duration="1977000" />
       <workItem from="1650620160205" duration="19443000" />
-      <workItem from="1650730112728" duration="2517000" />
+      <workItem from="1650730112728" duration="15922000" />
+      <workItem from="1650756080180" duration="4000" />
+      <workItem from="1650796099593" duration="6111000" />
+      <workItem from="1650875873008" duration="28994000" />
+      <workItem from="1650960691583" duration="9768000" />
     </task>
     <servers />
   </component>
