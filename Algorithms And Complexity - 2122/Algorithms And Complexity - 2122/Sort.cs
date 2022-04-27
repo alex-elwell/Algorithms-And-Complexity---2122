@@ -17,17 +17,28 @@ public class Sort
     public int[] QuickSort(int[] data, int reverse, int low, int high )
     {
         // Algorithm
-        if (low < high)
-        {
-            int partition = QuickSortPartition(data, low, high);
-            QuickSort(data, reverse, low, partition - 1);
-            QuickSort(data, reverse, partition + 1, high);
+        if (reverse == 1)
+        { 
+            if (low < high) 
+            {
+                    int partition = QuickSortPartition(data, low, high);
+                    QuickSort(data, reverse, low, partition - 1);
+                    QuickSort(data, reverse, partition + 1, high);
+            }
         }
 
         if (reverse == 2)
         {
-            //TODO - make this reverse - if not remove option for this and do it one way only!
+            if (low < high)
+            {
+                int partition = QuickSortPartitionReverse(data, low, high);
+                QuickSort(data, reverse, low, partition - 1);
+                QuickSort(data, reverse, partition + 1, high);
+            }
+            
         }
+
+        StepCount = QuickSortStep;
         //return array 
         return data;
     }
@@ -39,6 +50,7 @@ public class Sort
         for (int j = low; j <= high-1; j++)
         {
             QuickSortStep++;
+            Console.WriteLine($"QuickSort Step = {QuickSortStep}");
             if (arr[j] < pivot)
             {
                 i++;
@@ -54,7 +66,27 @@ public class Sort
     }
     
     
-    
+    public int QuickSortPartitionReverse(int[] arr, int low, int high)
+    {
+        int pivot = arr[high]; //Pivot - element to be placed right
+        int i = low - 1;
+        for (int j = low; j <= high-1; j++)
+        {
+            QuickSortStep++;
+            Console.WriteLine($"QuickSort Step = {QuickSortStep}");
+            if (arr[j] > pivot)
+            {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp2 = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp2;
+        return (i+1);
+    }
     
     
     
@@ -179,9 +211,24 @@ public class Sort
     {
         //TODO - merge sort 
         
+        // mergeSort(array)
         
+        // if array.length <= 1 then
         
-        //Merge Sort 
+        // return array 
+        
+        // left = new array
+        
+        // right = new array 
+        
+        // mid = left+ right/2
+        
+        // mergeSort(left)
+        
+        // mergeSort(right)
+        
+        // merge(left, right)    
+
         return new int[1];
     }
 

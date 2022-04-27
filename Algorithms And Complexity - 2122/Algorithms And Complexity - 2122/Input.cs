@@ -74,7 +74,42 @@ public class Input
                 Environment.Exit(001);
             }
         }
+        //add combined array's to the dictionary to be analysed
 
+        Dictionary<string, string?[]> tempDictionary = new Dictionary<string, string?[]>();
+
+        List<string?> temp256 = new List<string?>();
+        List<string?> temp2048 = new List<string?>();
+
+
+
+        //Index of - items we want - index again of the other item - index of - last item we want
+        
+        foreach (var i in dictionary)
+        {
+            if (i.Key.Contains("256"))
+            {
+                foreach (var y in i.Value)
+                {
+                    // Console.WriteLine(y);
+                    temp256.Add(y);
+                }
+            }
+            else if (i.Key.Contains("2048"))
+            {
+                foreach (var y in i.Value)
+                {
+                    temp2048.Add(y);
+                }
+                Console.WriteLine("There is a 2048");
+            }
+        }
+        tempDictionary.Add("256 Merge", temp256.ToArray());
+        tempDictionary.Add("2048 Merge", temp2048.ToArray());
+        //Add temp dictionary to new dictionary. 
+        tempDictionary.ToList().ForEach(x => dictionary.Add(x.Key, x.Value));
+
+        
         //Return's the dictionary.  
         return dictionary;
     }

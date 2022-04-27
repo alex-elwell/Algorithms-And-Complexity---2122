@@ -11,8 +11,6 @@ var output = Input.FileReturn();
 List<int> masterStepCount = new List<int>();
 
 
-
-
 while (true)
 {
     //Count for the amount of data 
@@ -71,13 +69,6 @@ while (true)
         Environment.Exit(1);
         return 0;
     });
-
-    // foreach (var i in data)
-    // {
-    //     Console.WriteLine($"Data: {i}");
-    //     Console.WriteLine($"Data type: {i.GetType()}");
-    // }
-    // Console.WriteLine($"File name: {fileName}");
 
     var sort = new Sort(data);
 
@@ -156,6 +147,10 @@ while (true)
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(2);
                     masterStepCount.Add(sort.StepCount);
+                    foreach (var i in dataReturn)
+                    {
+                        Console.WriteLine(i);
+                    }
                     break;
                 case "3":
                     dataReturn = sort.InsertionSort(int.Parse(directionOption!));
@@ -236,21 +231,41 @@ while (true)
         {
             Console.WriteLine(i);
         }
+        int steps = sort.StepCount;
+        masterStepCount.Add(5);
+        masterStepCount.Add(steps);
     }else if (searchOption == "2")
     {
         search.BinarySearch(dataReturn, int.Parse(query));
+        int steps = sort.StepCount;
+        masterStepCount.Add(6);
+        masterStepCount.Add(steps);
+    }
+    
+    Console.WriteLine("The Amount of Steps are below:");
+    
+    for (int i = 0; i < masterStepCount.Count; i=i+2)
+    {
+        switch (masterStepCount[i])
+        {
+            case 1:
+                Console.WriteLine($"Bubble Sort: {masterStepCount[i+1]}");
+                break;
+            case 2:
+                Console.WriteLine($"Quick Sort: {masterStepCount[i+1]}");
+                break;
+            case 3:
+                Console.WriteLine($"Insertion Sort: {masterStepCount[i+1]}");
+                break;
+            case 4:
+                Console.WriteLine($"Merge Sort: {masterStepCount[i+1]}");
+                break;
+            case 5:
+                Console.WriteLine($"Linear Search: {masterStepCount[i+1]}");
+                break;
+            case 6:
+                Console.WriteLine($"Binary Search: {masterStepCount[i+1]}");
+                break;
+        }
     }
 }
-
-
-//TODO - Add option to see steps?
-foreach (var i in masterStepCount)
-{
-    Console.WriteLine(i);
-}
-
-//TODO - ability to combine arrays - 2
- 
-
-//TODO - Analyse all of the steps for sorts.
-
