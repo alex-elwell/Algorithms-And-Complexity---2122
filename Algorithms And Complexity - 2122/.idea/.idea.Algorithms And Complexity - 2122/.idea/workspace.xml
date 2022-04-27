@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b6155818-dc57-4c25-9fdf-a4d76ee9dbf9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Search.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Search.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Sort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Sort.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <workItem from="1650796099593" duration="6111000" />
       <workItem from="1650875873008" duration="28994000" />
       <workItem from="1650960691583" duration="31421000" />
-      <workItem from="1651052180205" duration="4553000" />
+      <workItem from="1651052180205" duration="4736000" />
     </task>
     <servers />
   </component>
