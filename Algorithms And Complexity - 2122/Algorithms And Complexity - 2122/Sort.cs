@@ -213,62 +213,120 @@ public class Sort
 
     public int[] MergeSortMain(int reverse, int[] data)
     {
-        //TODO - merge sort 
-
-        int[] left;
-        int[] right;
-        //Creating new array of the data to be changed locally. 
-        // int[] data = new int[data.Length];
-        // Array.Copy(data, data, data.Length);
-        int[] result = new int[data.Length];
-
-        //If the result is smaller then 1 - then stop the recursion. 
-        if (data.Length <= 1)
+        if (reverse == 1)
         {
-            return data;
-        }
-        //Set the mid point to be used for splitting array
-        int mid = data.Length / 2;
+            int[] left;
+            int[] right;
+            //Creating new array of the data to be changed locally. 
+            // int[] data = new int[data.Length];
+            // Array.Copy(data, data, data.Length);
+            int[] result = new int[data.Length];
+
+            //If the result is smaller then 1 - then stop the recursion. 
+            if (data.Length <= 1)
+            {
+                return data;
+            }
+            //Set the mid point to be used for splitting array
+            int mid = data.Length / 2;
         
-        //Create left and right array's to be sorted separately
-        left = new int[mid];
+            //Create left and right array's to be sorted separately
+            left = new int[mid];
         
-        //Now account for the their being an even or odd amount of numbers in the list
-        if (data.Length % 2 == 0)
-        {
-            //even amount of numbers on either side
-            right = new int[mid];
+            //Now account for the their being an even or odd amount of numbers in the list
+            if (data.Length % 2 == 0)
+            {
+                //even amount of numbers on either side
+                right = new int[mid];
+            }
+            else
+            {
+                //odd amount of numbers so we add one
+                right = new int[mid + 1];
+            }
+        
+            //now we have empty array's that are the right length - populate them now.
+            for (int i = 0; i < mid; i++)
+            {
+                //Populate left array
+                left[i] = data[i];
+            }
+
+            int x = 0;
+            for (int i = mid; i < data.Length; i++)
+            {
+                //add to the right - we need a new pointer to start populating from the left 
+                right[x] = data[i];
+                x++;
+            }
+        
+            //As this is a recursive algorithm we need to actually call the merge 
+
+            left = MergeSortMain(reverse, left);
+
+            right = MergeSortMain(reverse, right);
+
+            result = Merge(left, right);
+        
+            return result;
         }
         else
         {
-            //odd amount of numbers so we add one
-            right = new int[mid + 1];
-        }
+            int[] left;
+            int[] right;
+            //Creating new array of the data to be changed locally. 
+            // int[] data = new int[data.Length];
+            // Array.Copy(data, data, data.Length);
+            int[] result = new int[data.Length];
+
+            //If the result is smaller then 1 - then stop the recursion. 
+            if (data.Length <= 1)
+            {
+                return data;
+            }
+            //Set the mid point to be used for splitting array
+            int mid = data.Length / 2;
         
-        //now we have empty array's that are the right length - populate them now.
-        for (int i = 0; i < mid; i++)
-        {
-            //Populate left array
-            left[i] = data[i];
-        }
-
-        int x = 0;
-        for (int i = mid; i < data.Length; i++)
-        {
-            //add to the right - we need a new pointer to start populating from the left 
-            right[x] = data[i];
-            x++;
-        }
+            //Create left and right array's to be sorted separately
+            left = new int[mid];
         
-        //As this is a recursive algorithm we need to actually call the merge 
-
-        left = MergeSortMain(reverse, left);
-
-        right = MergeSortMain(reverse, right);
-
-        result = Merge(left, right);
+            //Now account for the their being an even or odd amount of numbers in the list
+            if (data.Length % 2 == 0)
+            {
+                //even amount of numbers on either side
+                right = new int[mid];
+            }
+            else
+            {
+                //odd amount of numbers so we add one
+                right = new int[mid + 1];
+            }
         
-        return result;
+            //now we have empty array's that are the right length - populate them now.
+            for (int i = 0; i < mid; i++)
+            {
+                //Populate left array
+                left[i] = data[i];
+            }
+
+            int x = 0;
+            for (int i = mid; i < data.Length; i++)
+            {
+                //add to the right - we need a new pointer to start populating from the left 
+                right[x] = data[i];
+                x++;
+            }
+        
+            //As this is a recursive algorithm we need to actually call the merge 
+
+            left = MergeSortMain(reverse, left);
+
+            right = MergeSortMain(reverse, right);
+
+            result = MergeReverse(left, right);
+        
+            return result;
+        }
     }
 
     public int[] Merge(int[] left, int[] right)
@@ -287,6 +345,52 @@ public class Sort
             {
                 //if element in left array is smaller then items in the right - add that to the result array
                 if (left[indexLeft] <= right[indexRight])
+                {
+                    result[resultIndex] = left[indexLeft];
+                    indexLeft++;
+                    resultIndex++;
+                }
+                //if not then add right item to the result 
+                else
+                {
+                    result[resultIndex] = right[indexRight];
+                    indexRight++;
+                    resultIndex++;
+                }
+            }
+            //if the left array has elements still then add to the result 
+            else if (indexLeft < left.Length)
+            {
+                result[resultIndex] = left[indexLeft];
+                indexLeft++;
+                resultIndex++;
+            }
+            //if the right array still has elements - add to the result
+            else if (indexRight < right.Length)
+            {
+                result[resultIndex] = right[indexRight];
+                indexRight++;
+                resultIndex++;
+            }
+        }
+        return result;
+    }
+    public int[] MergeReverse(int[] left, int[] right)
+    {
+        int resultLen = right.Length + left.Length;
+        int[] result = new int[resultLen];
+        int indexLeft = 0;
+        int indexRight = 0;
+        int resultIndex = 0;
+
+        // While array Left or Right still has the 
+        while (indexLeft < left.Length || indexRight < right.Length)
+        {
+            //if both of the arrays have numbers/elements in them
+            if (indexLeft < left.Length && indexRight < right.Length)
+            {
+                //if element in left array is smaller then items in the right - add that to the result array
+                if (left[indexLeft] >= right[indexRight])
                 {
                     result[resultIndex] = left[indexLeft];
                     indexLeft++;
