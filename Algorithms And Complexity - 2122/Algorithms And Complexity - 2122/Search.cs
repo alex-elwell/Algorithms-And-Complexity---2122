@@ -2,35 +2,37 @@ namespace Algorithms_And_Complexity___2122;
 
 public class Search
 {
+    public int StepCount { get; set; }
+    
     public List<int> LinearSearch(int[] data, int query)
     {
         //List format - Index - data 
         List<int> dataReturn = new List<int>();
 
         //Linear Search
+        
         for (int i = 0; i <= data.Length - 1; i++)
         {
+            StepCount++;
             if (data[i] == query)
             {
                 dataReturn.Add(i);
                 dataReturn.Add(data[i]);
             }
         }
-
+        Console.WriteLine("---------------");
         string? option;
         if (dataReturn.Count < 1)
         {
             while (true)
             {
-                Console.WriteLine(
-                    "The data was not found - would you like to search for the nearest number? \nI use a binary search to achieve this. \n1: No\n2: Yes");
+                Console.WriteLine("The data was not found - would you like to search for the nearest number? \nI use a binary search to achieve this. \n1: No\n2: Yes");
                 option = Console.ReadLine();
                 if (option == "1" || option == "2")
                 {
                     break;
                 }
             }
-
             if (option == "1")
             {
                 //Returns an empty array
@@ -39,12 +41,19 @@ public class Search
             else if (option == "2")
             {
                 //Will check for next viable number
-                //TODO - use binary search to find the nearest number in this case
                 BinarySearch(data, query);
             }
-
         }
-        
+
+        int x = 0;
+        foreach (var i in dataReturn)
+        {
+            Console.WriteLine($"We found: {dataReturn[1]} at: {dataReturn[0] + x}");
+            x++;
+        }
+        Console.WriteLine("---------------");
+        Console.WriteLine("Press enter to continue");
+        Console.ReadLine();
         return dataReturn;
     }
 
@@ -58,6 +67,7 @@ public class Search
         int max = data.Length - 1;
         while (min <= max)
         {
+            StepCount++;
             int middle = (min + max) / 2;
          
             if (query == data[middle])
@@ -84,6 +94,7 @@ public class Search
         int near=0; //Hold the index of the enarest value
         while (min <= max)
         {
+            StepCount++;
             int middle = (min + max) / 2;
             near = middle;
             if (data[middle] == query)
@@ -113,22 +124,23 @@ public class Search
         // {
         //     dataReturn.Add(data[result]);
         // }
-
+        
+        Console.WriteLine("---------------");
         if (dataReturn.Count == 1 )
         {
             Console.WriteLine("Doesnt exist in the array. ");
             //Get the nearest value 
             Console.WriteLine($"Nearest Value: {data[near]} at: {near}");
-            
         }else if (dataReturn.Count > 2)
         {
             for (var i = 0; i <= dataReturn.Count - 1; i++)
             {
                 Console.WriteLine($"We found: {dataReturn[1]} at: {dataReturn[0] + i}");
             }
-
         }
-        
+        Console.WriteLine("---------------");
+        Console.WriteLine("Press enter to continue");
+        Console.ReadLine();
         //if its bigger then the index[^1] then give them the biggest item
         //Return nothing if nothing found. 
         

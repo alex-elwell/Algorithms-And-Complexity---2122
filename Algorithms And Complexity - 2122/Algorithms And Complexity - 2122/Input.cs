@@ -46,8 +46,8 @@ public class Input
                 }
                 // Create a string that holds the lines of the code.
                 var lines = list.ToArray();
+                
                 // Add this new list along with the file name to the dictionary 
-                // Key = file name, Value = Data from the file. 
                 dictionary.Add(file.Name, lines);
             }
         }
@@ -74,7 +74,41 @@ public class Input
                 Environment.Exit(001);
             }
         }
+        //add combined array's to the dictionary to be analysed
 
+        Dictionary<string, string?[]> tempDictionary = new Dictionary<string, string?[]>();
+
+        List<string?> temp256 = new List<string?>();
+        List<string?> temp2048 = new List<string?>();
+
+
+
+        //Index of - items we want - index again of the other item - index of - last item we want
+        
+        foreach (var i in dictionary)
+        {
+            if (i.Key.Contains("256"))
+            {
+                foreach (var y in i.Value)
+                {
+                    // Console.WriteLine(y);
+                    temp256.Add(y);
+                }
+            }
+            else if (i.Key.Contains("2048"))
+            {
+                foreach (var y in i.Value)
+                {
+                    temp2048.Add(y);
+                }
+            }
+        }
+        tempDictionary.Add("256 Merge", temp256.ToArray());
+        tempDictionary.Add("2048 Merge", temp2048.ToArray());
+        //Add temp dictionary to new dictionary. 
+        tempDictionary.ToList().ForEach(x => dictionary.Add(x.Key, x.Value));
+
+        
         //Return's the dictionary.  
         return dictionary;
     }
