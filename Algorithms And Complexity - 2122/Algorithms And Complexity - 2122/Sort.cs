@@ -13,7 +13,7 @@ public class Sort
     private int[] Data { get; set; }
     public int StepCount { get; set; }
     public int QuickSortStep { get; set; } = 0;
-
+    public int MergeSortStep { get; set; } = 0; 
     public int[] QuickSort(int[] data, int reverse, int low, int high)
     {
         // Algorithm
@@ -36,7 +36,7 @@ public class Sort
             }
 
         }
-        StepCount = QuickSortStep;
+        // StepCount = QuickSortStep;
         //return array 
         return data;
     }
@@ -48,9 +48,9 @@ public class Sort
         int i = low - 1;
         for (int j = low; j <= high - 1; j++)
         {
-            QuickSortStep++;
             if (arr[j] < pivot)
             {
+                QuickSortStep++;
                 i++;
                 int temp = arr[i];
                 arr[i] = arr[j];
@@ -58,6 +58,7 @@ public class Sort
             }
         }
 
+        QuickSortStep++;
         int temp2 = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp2;
@@ -71,16 +72,16 @@ public class Sort
         int i = low - 1;
         for (int j = low; j <= high - 1; j++)
         {
-            QuickSortStep++;
             if (arr[j] > pivot)
             {
+                QuickSortStep++;
                 i++;
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
-
+        QuickSortStep++;
         int temp2 = arr[i + 1];
         arr[i + 1] = arr[high];
         arr[high] = temp2;
@@ -102,7 +103,6 @@ public class Sort
             int temp;
             for (var y = 0; y <= dataCopy.Length - 2; y++)
             {
-                stepCount++;
                 for (var i = 0; i <= dataCopy.Length - 2; i++)
                 {
                     if (dataCopy[i] > dataCopy[i + 1])
@@ -110,6 +110,7 @@ public class Sort
                         temp = dataCopy[i + 1];
                         dataCopy[i + 1] = dataCopy[i];
                         dataCopy[i] = temp;
+                        stepCount = stepCount+3;
                     }
                 }
             }
@@ -125,16 +126,15 @@ public class Sort
             {
                 for (var i = 0; i <= dataCopy.Length - 2; i++)
                 {
-                    stepCount++;
                     if (dataCopy[i] < dataCopy[i + 1])
                     {
                         temp = dataCopy[i + 1];
                         dataCopy[i + 1] = dataCopy[i];
                         dataCopy[i] = temp;
+                        stepCount +=3;
                     }
                 }
             }
-
             StepCount = stepCount;
             return dataCopy;
         }
@@ -159,9 +159,9 @@ public class Sort
                 valueToCopy = dataCopy[i];
                 for (j = i - 1; j >= 0;)
                 {
-                    stepCount++;
                     if (valueToCopy < dataCopy[j])
                     {
+                        stepCount += 3;
                         dataCopy[j + 1] = dataCopy[j];
                         j--;
                         dataCopy[j + 1] = valueToCopy;
@@ -189,9 +189,9 @@ public class Sort
                 valueToCopy = dataCopy[i];
                 for (j = i - 1; j >= 0;)
                 {
-                    stepCount++;
                     if (valueToCopy > dataCopy[j])
                     {
+                        stepCount += 3;
                         dataCopy[j + 1] = dataCopy[j];
                         j--;
                         dataCopy[j + 1] = valueToCopy;
@@ -245,6 +245,7 @@ public class Sort
             //now we have empty array's that are the right length - populate them now.
             for (int i = 0; i < mid; i++)
             {
+                MergeSortStep++;
                 //Populate left array
                 left[i] = data[i];
             }
@@ -252,6 +253,7 @@ public class Sort
             int x = 0;
             for (int i = mid; i < data.Length; i++)
             {
+                MergeSortStep++;
                 //add to the right - we need a new pointer to start populating from the left 
                 right[x] = data[i];
                 x++;
@@ -302,6 +304,7 @@ public class Sort
             //now we have empty array's that are the right length - populate them now.
             for (int i = 0; i < mid; i++)
             {
+                MergeSortStep++;
                 //Populate left array
                 left[i] = data[i];
             }
@@ -309,6 +312,7 @@ public class Sort
             int x = 0;
             for (int i = mid; i < data.Length; i++)
             {
+                MergeSortStep++;
                 //add to the right - we need a new pointer to start populating from the left 
                 right[x] = data[i];
                 x++;
@@ -343,6 +347,7 @@ public class Sort
                 //if element in left array is smaller then items in the right - add that to the result array
                 if (left[indexLeft] <= right[indexRight])
                 {
+                    MergeSortStep ++;
                     result[resultIndex] = left[indexLeft];
                     indexLeft++;
                     resultIndex++;
@@ -350,6 +355,7 @@ public class Sort
                 //if not then add right item to the result 
                 else
                 {
+                    MergeSortStep++;
                     result[resultIndex] = right[indexRight];
                     indexRight++;
                     resultIndex++;
@@ -358,6 +364,7 @@ public class Sort
             //if the left array has elements still then add to the result 
             else if (indexLeft < left.Length)
             {
+                MergeSortStep++;
                 result[resultIndex] = left[indexLeft];
                 indexLeft++;
                 resultIndex++;
@@ -365,6 +372,7 @@ public class Sort
             //if the right array still has elements - add to the result
             else if (indexRight < right.Length)
             {
+                MergeSortStep++;
                 result[resultIndex] = right[indexRight];
                 indexRight++;
                 resultIndex++;
@@ -389,6 +397,7 @@ public class Sort
                 //if element in left array is smaller then items in the right - add that to the result array
                 if (left[indexLeft] >= right[indexRight])
                 {
+                    MergeSortStep++;
                     result[resultIndex] = left[indexLeft];
                     indexLeft++;
                     resultIndex++;
@@ -396,6 +405,7 @@ public class Sort
                 //if not then add right item to the result 
                 else
                 {
+                    MergeSortStep++;
                     result[resultIndex] = right[indexRight];
                     indexRight++;
                     resultIndex++;
@@ -404,6 +414,7 @@ public class Sort
             //if the left array has elements still then add to the result 
             else if (indexLeft < left.Length)
             {
+                MergeSortStep++;
                 result[resultIndex] = left[indexLeft];
                 indexLeft++;
                 resultIndex++;
@@ -411,6 +422,7 @@ public class Sort
             //if the right array still has elements - add to the result
             else if (indexRight < right.Length)
             {
+                MergeSortStep++;
                 result[resultIndex] = right[indexRight];
                 indexRight++;
                 resultIndex++;

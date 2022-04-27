@@ -161,7 +161,7 @@ while (true)
                     dataReturn = sort.QuickSort(dataCopy, int.Parse(directionOption!.Trim()), 0, data.Length - 1);
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(2);
-                    masterStepCount.Add(sort.StepCount);
+                    masterStepCount.Add(sort.QuickSortStep);
                     break;
                 case "3":
                     dataReturn = sort.InsertionSort(int.Parse(directionOption!.Trim()));
@@ -248,13 +248,13 @@ while (true)
         if (searchOption == "1")
         {
             var linearReturn = search.LinearSearch(dataReturn, int.Parse(query));
-            int steps = sort.StepCount;
+            int steps = search.StepCount;
             masterStepCount.Add(5);
             masterStepCount.Add(steps);
         }else if (searchOption == "2")
         {
             search.BinarySearch(dataReturn, int.Parse(query));
-            int steps = sort.StepCount;
+            int steps = search.StepCount;
             masterStepCount.Add(6);
             masterStepCount.Add(steps);
         }
@@ -263,8 +263,12 @@ while (true)
     
     //Outputting the amount of steps that each search and algorithm does / uses. 
     Console.WriteLine("The Amount of Steps are below:");
+    foreach (var i in masterStepCount)
+    {
+        Console.WriteLine($"i = {i}");
+    }
     
-    for (int i = 0; i < masterStepCount.Count; i=i+2)
+    for (int i = 0; i < masterStepCount.Count; i+=2)
     {
         switch (masterStepCount[i])
         {
