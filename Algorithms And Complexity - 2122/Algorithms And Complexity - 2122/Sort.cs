@@ -26,7 +26,6 @@ public class Sort
                 QuickSort(data, reverse, partition + 1, high);
             }
         }
-
         if (reverse == 2)
         {
             if (low < high)
@@ -37,12 +36,12 @@ public class Sort
             }
 
         }
-
         StepCount = QuickSortStep;
         //return array 
         return data;
     }
 
+    
     public int QuickSortPartition(int[] arr, int low, int high)
     {
         int pivot = arr[high]; //Pivot - element to be placed right
@@ -50,7 +49,6 @@ public class Sort
         for (int j = low; j <= high - 1; j++)
         {
             QuickSortStep++;
-            Console.WriteLine($"QuickSort Step = {QuickSortStep}");
             if (arr[j] < pivot)
             {
                 i++;
@@ -74,7 +72,6 @@ public class Sort
         for (int j = low; j <= high - 1; j++)
         {
             QuickSortStep++;
-            Console.WriteLine($"QuickSort Step = {QuickSortStep}");
             if (arr[j] > pivot)
             {
                 i++;

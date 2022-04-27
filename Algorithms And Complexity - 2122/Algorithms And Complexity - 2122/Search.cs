@@ -11,15 +11,8 @@ public class Search
 
         //Linear Search
         
-        //TODO - While data[i]<=query - do the thing - if not stop as it is an ordered list - do this after write up please
-        
         for (int i = 0; i <= data.Length - 1; i++)
         {
-            //if the current number is bigger then the number we want (ordered list) we can stop - limits the amount of time searching past query.  
-            if (data[i] > query)
-            {
-                break;
-            }
             StepCount++;
             if (data[i] == query)
             {
@@ -48,13 +41,15 @@ public class Search
             else if (option == "2")
             {
                 //Will check for next viable number
-                //TODO - use binary search to find the nearest number in this case
                 BinarySearch(data, query);
             }
         }
+
+        int x = 0;
         foreach (var i in dataReturn)
         {
-            Console.WriteLine($"We found: {dataReturn[1]} at: {dataReturn[0] + i}");
+            Console.WriteLine($"We found: {dataReturn[1]} at: {dataReturn[0] + x}");
+            x++;
         }
         Console.WriteLine("---------------");
         Console.WriteLine("Press enter to continue");

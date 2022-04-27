@@ -119,6 +119,7 @@ while (true)
     // While not a valid input
     while (true)
     {
+        Console.WriteLine("PLease be aware in Descending order - Search's will not be functional");
         Console.WriteLine("1: Ascending \n2: Descending?\n");
         directionOption = Console.ReadLine();
         //try parse - if not parse then not a number - ask for input again. 
@@ -143,6 +144,7 @@ while (true)
 
     int[] dataReturn = new int[] { };
 
+  
     if (int.Parse(sortDecision!) <= 4)
     {
         switch (sortDecision)
@@ -160,10 +162,6 @@ while (true)
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(2);
                     masterStepCount.Add(sort.StepCount);
-                    foreach (var i in dataReturn)
-                    {
-                        Console.WriteLine(i);
-                    }
                     break;
                 case "3":
                     dataReturn = sort.InsertionSort(int.Parse(directionOption!.Trim()));
@@ -203,60 +201,65 @@ while (true)
     }
 
     //Ask user for search option - validate the user's input
-    string? searchOption;
-    while (true)
+    
+    if (directionOption == "1")
     {
-        Console.WriteLine("\n1: Linear Search\n2: Binary Search");
-        searchOption = Console.ReadLine();
-        if (searchOption == "1" || searchOption == "2")
+        string? searchOption;
+        while (true)
         {
-            break;
+            Console.WriteLine("\n1: Linear Search\n2: Binary Search");
+            searchOption = Console.ReadLine();
+            if (searchOption == "1" || searchOption == "2")
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Please only enter '1' or '2'");
+            }
         }
-        else
+    
+        //Searching Algorithms
+        //New instance of search - passing no variable as these are passed directly
+        var search = new Search();
+        string? query;
+        // search - dataReturn(holding the data to be searched)
+        while (true)
         {
-            Console.WriteLine("Please only enter '1' or '2'");
+            Console.WriteLine("What would you like to Search for?");
+            query = Console.ReadLine();
+            try
+            {
+                if (query != null)
+                {
+                    int queryInt = int.Parse(query.Trim());
+                }
+                //if the parse worked - we just have a number so
+                //we can continue to send this to the search
+                break;
+            }
+            catch (Exception )
+            {
+                Console.WriteLine("Please Only enter a number");
+            }
+        }
+
+        // Actually using the corresponding search option depending on option chose. linear or binary.
+        if (searchOption == "1")
+        {
+            var linearReturn = search.LinearSearch(dataReturn, int.Parse(query));
+            int steps = sort.StepCount;
+            masterStepCount.Add(5);
+            masterStepCount.Add(steps);
+        }else if (searchOption == "2")
+        {
+            search.BinarySearch(dataReturn, int.Parse(query));
+            int steps = sort.StepCount;
+            masterStepCount.Add(6);
+            masterStepCount.Add(steps);
         }
     }
     
-    //Searching Algorithms
-    //New instance of search - passing no variable as these are passed directly
-    var search = new Search();
-    string? query;
-    // search - dataReturn(holding the data to be searched)
-    while (true)
-    {
-        Console.WriteLine("What would you like to Search for?");
-        query = Console.ReadLine();
-        try
-        {
-            if (query != null)
-            {
-                int queryInt = int.Parse(query.Trim());
-            }
-            //if the parse worked - we just have a number so
-            //we can continue to send this to the search
-            break;
-        }
-        catch (Exception )
-        {
-            Console.WriteLine("Please Only enter a number");
-        }
-    }
-
-    // Actually using the corresponding search option depending on option chose. linear or binary.
-    if (searchOption == "1")
-    {
-        var linearReturn = search.LinearSearch(dataReturn, int.Parse(query));
-        int steps = sort.StepCount;
-        masterStepCount.Add(5);
-        masterStepCount.Add(steps);
-    }else if (searchOption == "2")
-    {
-        search.BinarySearch(dataReturn, int.Parse(query));
-        int steps = sort.StepCount;
-        masterStepCount.Add(6);
-        masterStepCount.Add(steps);
-    }
     
     //Outputting the amount of steps that each search and algorithm does / uses. 
     Console.WriteLine("The Amount of Steps are below:");
