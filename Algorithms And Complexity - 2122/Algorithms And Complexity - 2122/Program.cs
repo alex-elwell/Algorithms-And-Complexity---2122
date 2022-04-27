@@ -134,7 +134,7 @@ while (true)
             continue;
         }
 
-        if (int.Parse(directionOption!) == 1 || int.Parse(directionOption!) == 2)
+        if (int.Parse(directionOption) == 1 || int.Parse(directionOption) == 2)
         {
             break;
         }
@@ -145,12 +145,12 @@ while (true)
     int[] dataReturn = new int[] { };
 
   
-    if (int.Parse(sortDecision!) <= 4)
+    if (int.Parse(sortDecision) <= 4)
     {
         switch (sortDecision)
             {
                 case "1":
-                    dataReturn = sort.BubbleSort(int.Parse(directionOption!.Trim()));
+                    dataReturn = sort.BubbleSort(int.Parse(directionOption.Trim()));
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(1);
                     masterStepCount.Add(sort.StepCount);
@@ -158,22 +158,22 @@ while (true)
                 case "2":
                     int[] dataCopy = new int[data.Length];
                     Array.Copy(data, dataCopy, data.Length);
-                    dataReturn = sort.QuickSort(dataCopy, int.Parse(directionOption!.Trim()), 0, data.Length - 1);
+                    dataReturn = sort.QuickSort(dataCopy, int.Parse(directionOption.Trim()), 0, data.Length - 1);
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(2);
                     masterStepCount.Add(sort.QuickSortStep);
                     break;
                 case "3":
-                    dataReturn = sort.InsertionSort(int.Parse(directionOption!.Trim()));
+                    dataReturn = sort.InsertionSort(int.Parse(directionOption.Trim()));
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(3);
                     masterStepCount.Add(sort.StepCount);
                     break;
                 case "4":
-                    dataReturn = sort.MergeSortMain(int.Parse(directionOption!.Trim()), data);
+                    dataReturn = sort.MergeSortMain(int.Parse(directionOption.Trim()), data);
                     //adding to the masterStepCount that will hold both the type of search and the amount of steps
                     masterStepCount.Add(4);
-                    masterStepCount.Add(sort.StepCount);
+                    masterStepCount.Add(sort.MergeSortStep);
                     break;
             }
     }
@@ -263,11 +263,7 @@ while (true)
     
     //Outputting the amount of steps that each search and algorithm does / uses. 
     Console.WriteLine("The Amount of Steps are below:");
-    foreach (var i in masterStepCount)
-    {
-        Console.WriteLine($"i = {i}");
-    }
-    
+
     for (int i = 0; i < masterStepCount.Count; i+=2)
     {
         switch (masterStepCount[i])
