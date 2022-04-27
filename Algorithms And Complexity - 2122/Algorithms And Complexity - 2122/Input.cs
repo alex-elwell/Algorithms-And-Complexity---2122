@@ -46,8 +46,8 @@ public class Input
                 }
                 // Create a string that holds the lines of the code.
                 var lines = list.ToArray();
+                
                 // Add this new list along with the file name to the dictionary 
-                // Key = file name, Value = Data from the file. 
                 dictionary.Add(file.Name, lines);
             }
         }
@@ -101,7 +101,6 @@ public class Input
                 {
                     temp2048.Add(y);
                 }
-                Console.WriteLine("There is a 2048");
             }
         }
         tempDictionary.Add("256 Merge", temp256.ToArray());

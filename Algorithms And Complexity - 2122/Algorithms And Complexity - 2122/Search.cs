@@ -15,8 +15,8 @@ public class Search
         
         for (int i = 0; i <= data.Length - 1; i++)
         {
-            //if the current number is bigger then the number we want (ordered list) we can stop
-            if (data[i] + 1 > query)
+            //if the current number is bigger then the number we want (ordered list) we can stop - limits the amount of time searching past query.  
+            if (data[i] > query)
             {
                 break;
             }
@@ -27,21 +27,19 @@ public class Search
                 dataReturn.Add(data[i]);
             }
         }
-
+        Console.WriteLine("---------------");
         string? option;
         if (dataReturn.Count < 1)
         {
             while (true)
             {
-                Console.WriteLine(
-                    "The data was not found - would you like to search for the nearest number? \nI use a binary search to achieve this. \n1: No\n2: Yes");
+                Console.WriteLine("The data was not found - would you like to search for the nearest number? \nI use a binary search to achieve this. \n1: No\n2: Yes");
                 option = Console.ReadLine();
                 if (option == "1" || option == "2")
                 {
                     break;
                 }
             }
-
             if (option == "1")
             {
                 //Returns an empty array
@@ -53,9 +51,14 @@ public class Search
                 //TODO - use binary search to find the nearest number in this case
                 BinarySearch(data, query);
             }
-
         }
-        
+        foreach (var i in dataReturn)
+        {
+            Console.WriteLine($"We found: {dataReturn[1]} at: {dataReturn[0] + i}");
+        }
+        Console.WriteLine("---------------");
+        Console.WriteLine("Press enter to continue");
+        Console.ReadLine();
         return dataReturn;
     }
 
@@ -126,7 +129,8 @@ public class Search
         // {
         //     dataReturn.Add(data[result]);
         // }
-
+        
+        Console.WriteLine("---------------");
         if (dataReturn.Count == 1 )
         {
             Console.WriteLine("Doesnt exist in the array. ");
@@ -139,7 +143,9 @@ public class Search
                 Console.WriteLine($"We found: {dataReturn[1]} at: {dataReturn[0] + i}");
             }
         }
-        
+        Console.WriteLine("---------------");
+        Console.WriteLine("Press enter to continue");
+        Console.ReadLine();
         //if its bigger then the index[^1] then give them the biggest item
         //Return nothing if nothing found. 
         
