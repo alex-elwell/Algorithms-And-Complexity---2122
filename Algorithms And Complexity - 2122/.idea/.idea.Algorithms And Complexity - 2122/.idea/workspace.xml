@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6155818-dc57-4c25-9fdf-a4d76ee9dbf9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Algorithms And Complexity - 2122/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Input.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms And Complexity - 2122/Input.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
       <workItem from="1651057864823" duration="1591000" />
       <workItem from="1651066619614" duration="4646000" />
       <workItem from="1651080160685" duration="1604000" />
-      <workItem from="1651090383809" duration="323000" />
+      <workItem from="1651090383809" duration="691000" />
     </task>
     <servers />
   </component>

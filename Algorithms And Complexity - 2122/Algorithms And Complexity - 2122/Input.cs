@@ -72,6 +72,10 @@ public class Input
                 Console.WriteLine("The count is not equal to the expected value");
                 Console.WriteLine("Please check the files in the net 6.0 folder and restart the program.");
                 Environment.Exit(001);
+            }else if (required != null && int.Parse(required) == 0)
+            {
+                Console.WriteLine("Please check the files in the net 6.0 folder and restart the program.");
+                Environment.Exit(001);
             }
         }
         //add combined array's to the dictionary to be analysed
