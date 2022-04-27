@@ -84,31 +84,38 @@ public class Input
 
 
         //Index of - items we want - index again of the other item - index of - last item we want
-        
-        foreach (var i in dictionary)
+        try
         {
-            if (i.Key.Contains("256"))
+            foreach (var i in dictionary)
             {
-                foreach (var y in i.Value)
+                if (i.Key.Contains("256"))
                 {
-                    // Console.WriteLine(y);
-                    temp256.Add(y);
+                    foreach (var y in i.Value)
+                    {
+                        // Console.WriteLine(y);
+                        temp256.Add(y);
+                    }
+                }
+                else if (i.Key.Contains("2048"))
+                {
+                    foreach (var y in i.Value)
+                    {
+                        temp2048.Add(y);
+                    }
                 }
             }
-            else if (i.Key.Contains("2048"))
-            {
-                foreach (var y in i.Value)
-                {
-                    temp2048.Add(y);
-                }
-            }
-        }
-        tempDictionary.Add("256 Merge", temp256.ToArray());
-        tempDictionary.Add("2048 Merge", temp2048.ToArray());
-        //Add temp dictionary to new dictionary. 
-        tempDictionary.ToList().ForEach(x => dictionary.Add(x.Key, x.Value));
+            tempDictionary.Add("256 Merge", temp256.ToArray());
+            tempDictionary.Add("2048 Merge", temp2048.ToArray());
+            //Add temp dictionary to new dictionary. 
+            tempDictionary.ToList().ForEach(x => dictionary.Add(x.Key, x.Value));
 
-        
+        }
+        catch(Exception)
+        {
+             Console.WriteLine("Please check the files in the net 6.0 folder and restart the program.");
+            
+        }
+
         //Return's the dictionary.  
         return dictionary;
     }
